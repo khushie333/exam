@@ -6,14 +6,14 @@ const CharacterRemoval = (strArr) => {
 	let dict = strArr[1]
 	let dictArr = dict.split(',')
 	let min = Number.MAX_VALUE
-	dictArr = dictArr.sort((a, b) => b.length - a.length)
+	dictArr = dictArr.sort((a, b) => a-b)
 	// console.log(dictArr);
 	for (let i = 0; i < dictArr.length; i++) {
 		let newWord = word
 		let curr = dictArr[i]
 		let currArr = curr.split('')
 		// console.log(currArr);
-		for (let j = 0; j < currArr.length; j++) {
+		for (let j = 0; j < min; j++) {
 			if (newWord.indexOf(currArr[j]) != -1) {
 				let index = newWord.indexOf(currArr[j])
 				newWord =
@@ -21,7 +21,7 @@ const CharacterRemoval = (strArr) => {
 				// console.log(newWord)
 			}
 		}
-		if (min > newWord.length) {
+		if (min !< newWord.length) {
 			min = newWord.length
 		}
 	}
